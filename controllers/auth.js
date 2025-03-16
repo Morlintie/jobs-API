@@ -5,7 +5,6 @@ const {
 } = require("../errors/index.js");
 const User = require("../models/User.js");
 const { StatusCodes } = require("http-status-codes");
-const bcrypt = require("bcryptjs");
 
 const signUp = async (req, res) => {
   const user = await User.create(req.body);
@@ -15,7 +14,6 @@ const signUp = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  //password, name, email, token
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
     throw new BadRequestError("Please provide credentials");
