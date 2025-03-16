@@ -1,11 +1,13 @@
 require("express-async-errors");
 const express = require("express");
 const connectDB = require("./db/connection.js");
-const registerRouter = require("./routes/register.js");
+const registerRouter = require("./routes/auth.js");
 const jobsRouter = require("./routes/jobs.js");
 const errorHandlerMiddleware = require("./middleware/errorHandlerMiddleware.js");
 const app = express();
 const PORT = process.env.PORT;
+
+app.use(express.json());
 
 app.use("/api/v1/register", registerRouter);
 app.use("/api/v1/jobs", jobsRouter);
